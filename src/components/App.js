@@ -1,8 +1,12 @@
 import React from "react";
+import styled from "styled-components";
 
+const Title = styled.h1`
+  color: red;
+`;
 class App extends React.Component {
   render() {
-    return <h1>Hello World</h1>;
+    return <Title>Hello World</Title>;
   }
 }
 
