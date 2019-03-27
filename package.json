@@ -10,6 +10,7 @@
     "dev": "webpack-dev-server --open --hot",
     "start": "serve -s build",
     "build": "webpack --mode production",
+    "heroku-postbuild": "webpack -p",
     "test": "jest"
   },
   "repository": {
