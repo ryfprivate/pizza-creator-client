@@ -7,7 +7,8 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open --hot",
+    "dev": "webpack-dev-server --open --hot",
+    "start": "serve -s build",
     "build": "webpack --mode production",
     "test": "jest"
   },
@@ -44,6 +45,7 @@
   "dependencies": {
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
+    "serve": "^10.1.2",
     "styled-components": "^4.2.0"
   }
 }
