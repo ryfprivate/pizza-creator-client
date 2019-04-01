@@ -11,7 +11,8 @@
     "start": "node server.js",
     "build": "webpack --mode production",
     "heroku-postbuild": "webpack -p",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint src/**/*.js"
   },
   "repository": {
     "type": "git",
