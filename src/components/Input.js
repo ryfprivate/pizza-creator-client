@@ -1,6 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
+const Container = styled.div`
+  flex-grow: 1;
+  margin-bottom: 30px;
+`;
+
 const Label = styled.label`
   font-size: 12px;
   font-weight: 700;
@@ -12,9 +17,9 @@ const Label = styled.label`
 
 export default ({ label }) => {
   return (
-    <div>
+    <Container>
       <Label>{label}</Label>
       <input type="text" />
-    </div>
+    </Container>
   );
 };
