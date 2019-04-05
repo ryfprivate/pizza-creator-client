@@ -15,11 +15,21 @@ const Label = styled.label`
   margin-bottom: 10px;
 `;
 
+const Input = styled.input`
+  width: 85%;
+  background: #fff;
+  border-radius: 2px;
+  border: 1px solid #d7d7e7;
+  font-size: 1.25rem;
+  padding: 8px 10px;
+  outline: none;
+`;
+
 export default ({ label }) => {
   return (
     <Container>
       <Label>{label}</Label>
-      <input type="text" />
+      <Input type="text" />
     </Container>
   );
 };
