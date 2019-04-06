@@ -10,11 +10,42 @@ const Page = styled.div`
     Arial, sans-serif;
 `;
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      detailsFormData: {},
+      detailsFormDirty: false,
+    }
+
+    this.onDetailsFormDataChange = this.onDetailsFormDataChange.bind(this);
+  }
+
+  onDetailsFormDataChange(name, value) {
+    const { detailsFormData } = this.state;
+
+    const newDetailsFormData = {
+      ...detailsFormData,
+      [name]: value,
+    };
+
+    this.setState({
+      detailsFormData: newDetailsFormData,
+    });
+  }
+
   render() {
+
+    const { detailsFormData, detailsFormDirty } = this.state;
+
     return (
       <Page>
-        <Section title="Enter your details">
-          <DetailsForm />
+        <Section title="Enter Your Details">
+          <DetailsForm 
+            data={detailsFormData} 
+            dirty={detailsFormDirty}
+            onDataChange={this.onDetailsFormDataChange}
+          />
         </Section>
         <Section title="Select your size">
           <Sizes />
