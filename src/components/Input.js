@@ -31,17 +31,7 @@ const InputFrame = styled.input`
 const ValidationErrorDiv = styled.div`
   color: #B00020;
   font-size: 14px;
-`
-
-// export default ({ label }) => {
-//   return (
-//     <Container>
-//       <Label>{label}</Label>
-//       <Input type="text" />
-//     </Container>
-//   );
-// };
-
+`;
 
 export default class Input extends React.Component {
   constructor(props) {
