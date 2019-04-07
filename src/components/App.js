@@ -1,14 +1,14 @@
-import React from "react";
-import styled from "styled-components";
-
-import Section from "./Section";
-import DetailsForm from "./DetailsForm";
-import Sizes from "./Sizes";
+import React from 'react';
+import styled from 'styled-components';
+import Section from './Section';
+import DetailsForm from './DetailsForm';
+import Sizes from './Sizes';
 
 const Page = styled.div`
   font: 300 16px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
     Arial, sans-serif;
 `;
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -16,7 +16,7 @@ class App extends React.Component {
     this.state = {
       detailsFormData: {},
       detailsFormDirty: false,
-    }
+    };
 
     this.onDetailsFormDataChange = this.onDetailsFormDataChange.bind(this);
   }
@@ -35,14 +35,13 @@ class App extends React.Component {
   }
 
   render() {
-
     const { detailsFormData, detailsFormDirty } = this.state;
 
     return (
       <Page>
         <Section title="Enter Your Details">
-          <DetailsForm 
-            data={detailsFormData} 
+          <DetailsForm
+            data={detailsFormData}
             dirty={detailsFormDirty}
             onDataChange={this.onDetailsFormDataChange}
           />

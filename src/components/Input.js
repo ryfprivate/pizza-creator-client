@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const Container = styled.div`
   flex-grow: 1;
@@ -51,9 +51,9 @@ export default class Input extends React.Component {
       dirty: true,
     });
 
-    onChange(value);   
+    onChange(value);
   }
-  
+
   render() {
     const {
       label,
@@ -67,15 +67,15 @@ export default class Input extends React.Component {
       dirty,
     } = this.state;
 
-    const showError = !validate && (dirty || formDirty)
+    const showError = !validate && (dirty || formDirty);
 
     return (
-      <Container >
+      <Container>
         <Label className={showError && 'error'}>{label}</Label>
-        <InputFrame 
+        <InputFrame
           value={value}
           onChange={this.onChange}
-          type="text" 
+          type="text"
         />
         <ValidationErrorDiv>{showError && validationMessage}</ValidationErrorDiv>
       </Container>

@@ -1,6 +1,6 @@
 import React from 'react';
+import styled from 'styled-components';
 import Input from './Input';
-import styled from "styled-components";
 
 const DetailsFormDiv = styled.div`
   display: grid;
@@ -12,11 +12,11 @@ export default class DetailsForm extends React.Component {
   render() {
     const { data, onDataChange, dirty } = this.props;
 
-    const confirmMobileValidationMessage = getValidationMessageForConfirmMobile(data.confirmMobile, data.mobile)
+    const confirmMobileValidationMessage = getValidationMessageForConfirmMobile(data.confirmMobile, data.mobile);
 
     return (
       <DetailsFormDiv>
-        <Input 
+        <Input
           label="Name"
           value={data.name}
           formDirty={dirty}
@@ -24,7 +24,7 @@ export default class DetailsForm extends React.Component {
           onChange={value => onDataChange('name', value)}
           validationMessage="Please enter your name"
         />
-        <Input 
+        <Input
           label="Mobile Number"
           value={data.mobile}
           formDirty={dirty}
@@ -32,7 +32,7 @@ export default class DetailsForm extends React.Component {
           onChange={value => onDataChange('mobile', value)}
           validationMessage={getValidationMessageForMobile(data.mobile)}
         />
-        <Input 
+        <Input
           label="Confirm Mobile"
           value={data.confirmMobile}
           formDirty={dirty}
@@ -40,16 +40,15 @@ export default class DetailsForm extends React.Component {
           onChange={value => onDataChange('confirmMobile', value)}
           validationMessage={confirmMobileValidationMessage}
         />
-        <Input 
+        <Input
           label="Email"
           value={data.email}
           formDirty={dirty}
-          validate={data.email}
           validate={!getValidationMessageForEmail(data.email)}
           onChange={value => onDataChange('email', value)}
           validationMessage={getValidationMessageForEmail(data.email)}
         />
-        <Input 
+        <Input
           label="Address"
           value={data.address}
           formDirty={dirty}
@@ -57,7 +56,7 @@ export default class DetailsForm extends React.Component {
           onChange={value => onDataChange('address', value)}
           validationMessage="Please enter your Address"
         />
-        <Input 
+        <Input
           label="Post Code"
           value={data.postCode}
           formDirty={dirty}
