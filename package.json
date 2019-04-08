@@ -55,6 +55,8 @@
     "styled-components": "^4.2.0"
   },
   "jest": {
-    "setupFilesAfterEnv": ["./setupTests.js"]
+    "setupFilesAfterEnv": [
+      "./setupTests.js"
+    ]
   }
 }
