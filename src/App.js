@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Section from './Section';
-import DetailsForm from './DetailsForm';
-import Sizes from './Sizes';
+import Section from './components/Section';
+import DetailsForm from './components/DetailsForm';
+import Sizes from './components/Sizes';
 
 const Page = styled.div`
   font: 300 16px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
