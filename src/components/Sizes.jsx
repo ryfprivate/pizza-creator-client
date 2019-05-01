@@ -1,11 +1,63 @@
 import React from 'react';
+import styled from 'styled-components';
 
-export default () => {
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+`;
+
+const Size = styled.div`
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 1rem;
+  align-items: center;
+  cursor: pointer;
+  > span {
+    text-transform: capitalize;
+  }
+  &.active > img {
+    border-color: #e6e6e6;
+  }
+`;
+
+const Image = styled.img`
+  border: 8px solid transparent;
+  border-radius: 50%;
+  :hover {
+    border-color: #e6e6e6;
+  }
+  &.large {
+    height: 5rem;
+  }
+  &.medium {
+    height: 4rem;
+  }
+  &.small {
+    height: 3rem;
+  }
+`;
+
+export default props => {
+  const { sizes, selectedSize, onClick } = props;
   return (
-    <div>
-      <p>Large</p>
-      <p>Medium</p>
-      <p>Small</p>
-    </div>
+    <Container>
+      {sizes.map(size => {
+        const { name, imgUrl } = size;
+        return (
+          <Size
+            key={name}
+            className={`${
+              selectedSize && name === selectedSize.name ? 'active' : ''
+            }`}
+            onClick={() => {
+              onClick(size);
+            }}
+          >
+            <Image className={`${name}`} src={imgUrl} />
+            <span>{name}</span>
+          </Size>
+        );
+      })}
+    </Container>
   );
 };

@@ -4,6 +4,8 @@ import Section from './components/Section';
 import DetailsForm from './components/DetailsForm';
 import Sizes from './components/Sizes';
 
+import sizes from './sizes.json';
+
 const Page = styled.div`
   font: 300 16px/1.4 -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
     Arial, sans-serif;
@@ -15,10 +17,13 @@ class App extends React.Component {
 
     this.state = {
       detailsFormData: {},
-      detailsFormDirty: false
+      detailsFormDirty: false,
+      sizes: sizes,
+      selectedSize: null
     };
 
     this.onDetailsFormDataChange = this.onDetailsFormDataChange.bind(this);
+    this.onSizeClick = this.onSizeClick.bind(this);
   }
 
   onDetailsFormDataChange(name, value) {
@@ -34,8 +39,17 @@ class App extends React.Component {
     });
   }
 
+  onSizeClick(size) {
+    this.setState({ selectedSize: size });
+  }
+
   render() {
-    const { detailsFormData, detailsFormDirty } = this.state;
+    const {
+      detailsFormData,
+      detailsFormDirty,
+      sizes,
+      selectedSize
+    } = this.state;
 
     return (
       <Page>
@@ -47,7 +61,11 @@ class App extends React.Component {
           />
         </Section>
         <Section title="Select your size">
-          <Sizes />
+          <Sizes
+            sizes={sizes}
+            selectedSize={selectedSize}
+            onClick={this.onSizeClick}
+          />
         </Section>
       </Page>
     );
