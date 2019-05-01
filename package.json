@@ -55,6 +55,9 @@
     "styled-components": "^4.2.0"
   },
   "jest": {
+    "modulePaths": [
+      "<rootDir>"
+    ],
     "setupFilesAfterEnv": [
       "./setupTests.js"
     ]
