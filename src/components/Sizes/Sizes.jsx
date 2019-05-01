@@ -12,9 +12,6 @@ const Size = styled.div`
   grid-gap: 1rem;
   align-items: center;
   cursor: pointer;
-  > span {
-    text-transform: capitalize;
-  }
   &.active > img {
     border-color: #e6e6e6;
   }
@@ -37,6 +34,10 @@ const Image = styled.img`
   }
 `;
 
+const Span = styled.span`
+  text-transform: capitalize;
+`;
+
 export default props => {
   const { sizes, selectedSize, onClick } = props;
   return (
@@ -54,7 +55,7 @@ export default props => {
             }}
           >
             <Image className={`${name}`} src={imgUrl} alt={name} />
-            <span>{name}</span>
+            <Span>{name}</Span>
           </Size>
         );
       })}
