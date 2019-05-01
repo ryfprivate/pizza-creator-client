@@ -53,7 +53,7 @@ export default props => {
               onClick(size);
             }}
           >
-            <Image className={`${name}`} src={imgUrl} />
+            <Image className={`${name}`} src={imgUrl} alt={name} />
             <span>{name}</span>
           </Size>
         );
