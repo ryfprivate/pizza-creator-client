@@ -14,7 +14,7 @@ const Label = styled.label`
   display: block;
   margin-bottom: 10px;
   &.error {
-    color: #B00020;
+    color: #b00020;
   }
 `;
 
@@ -29,7 +29,7 @@ const InputFrame = styled.input`
 `;
 
 const ValidationErrorDiv = styled.div`
-  color: #B00020;
+  color: #b00020;
   font-size: 14px;
 `;
 
@@ -38,7 +38,7 @@ export default class Input extends React.Component {
     super(props);
 
     this.state = {
-      dirty: false,
+      dirty: false
     };
 
     this.onChange = this.onChange.bind(this);
@@ -48,7 +48,7 @@ export default class Input extends React.Component {
     const { onChange } = this.props;
 
     this.setState({
-      dirty: true,
+      dirty: true
     });
 
     onChange(value);
@@ -60,24 +60,20 @@ export default class Input extends React.Component {
       value = '',
       validate,
       validationMessage,
-      formDirty,
+      formDirty
     } = this.props;
 
-    const {
-      dirty,
-    } = this.state;
+    const { dirty } = this.state;
 
     const showError = !validate && (dirty || formDirty);
 
     return (
       <Container>
         <Label className={showError && 'error'}>{label}</Label>
-        <InputFrame
-          value={value}
-          onChange={this.onChange}
-          type="text"
-        />
-        <ValidationErrorDiv>{showError && validationMessage}</ValidationErrorDiv>
+        <InputFrame value={value} onChange={this.onChange} type="text" />
+        <ValidationErrorDiv>
+          {showError && validationMessage}
+        </ValidationErrorDiv>
       </Container>
     );
   }

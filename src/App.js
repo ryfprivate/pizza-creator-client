@@ -5,7 +5,7 @@ import DetailsForm from './components/DetailsForm';
 import Sizes from './components/Sizes';
 
 const Page = styled.div`
-  font: 300 16px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+  font: 300 16px/1.4 -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
     Arial, sans-serif;
 `;
 
@@ -15,7 +15,7 @@ class App extends React.Component {
 
     this.state = {
       detailsFormData: {},
-      detailsFormDirty: false,
+      detailsFormDirty: false
     };
 
     this.onDetailsFormDataChange = this.onDetailsFormDataChange.bind(this);
@@ -26,11 +26,11 @@ class App extends React.Component {
 
     const newDetailsFormData = {
       ...detailsFormData,
-      [name]: value,
+      [name]: value
     };
 
     this.setState({
-      detailsFormData: newDetailsFormData,
+      detailsFormData: newDetailsFormData
     });
   }
 

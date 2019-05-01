@@ -12,7 +12,10 @@ export default class DetailsForm extends React.Component {
   render() {
     const { data, onDataChange, dirty } = this.props;
 
-    const confirmMobileValidationMessage = getValidationMessageForConfirmMobile(data.confirmMobile, data.mobile);
+    const confirmMobileValidationMessage = getValidationMessageForConfirmMobile(
+      data.confirmMobile,
+      data.mobile
+    );
 
     return (
       <DetailsFormDiv>
