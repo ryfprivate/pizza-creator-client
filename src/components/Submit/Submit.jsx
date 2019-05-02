@@ -17,10 +17,12 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-export default () => {
+export default ({ onClick }) => {
   return (
     <Container>
-      <Button type="submit">Place Your Order</Button>
+      <Button type="submit" onClick={onClick}>
+        Place Your Order
+      </Button>
     </Container>
   );
 };
