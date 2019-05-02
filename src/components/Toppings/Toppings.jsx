@@ -32,13 +32,25 @@ const Image = styled.img`
   height: 35px;
 `;
 
-export default ({ toppings, selectedToppings }) => {
+export default ({ toppings, selectedToppings, onClick }) => {
   return (
     <Container>
       {toppings.map(topping => {
         const { name: toppingName, imgUrl } = topping;
         return (
-          <Topping>
+          <Topping
+            key={toppingName}
+            className={`${
+              selectedToppings.find(({ name }) => {
+                return name === topping.name;
+              })
+                ? 'active'
+                : ''
+            }`}
+            onClick={() => {
+              onClick(topping);
+            }}
+          >
             <ImageWrap>
               <Image src={imgUrl} alt={toppingName} />
             </ImageWrap>
