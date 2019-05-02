@@ -30,6 +30,8 @@ class App extends React.Component {
     this.onDetailsFormDataChange = this.onDetailsFormDataChange.bind(this);
     this.onSizeClick = this.onSizeClick.bind(this);
     this.onToppingClick = this.onToppingClick.bind(this);
+    this.addTopping = this.addTopping.bind(this);
+    this.minusTopping = this.minusTopping.bind(this);
   }
 
   onDetailsFormDataChange(name, value) {
@@ -60,6 +62,49 @@ class App extends React.Component {
         })
       : [{ ...topping, amount: 1 }, ...selectedToppings];
     this.setState({ selectedToppings: newSelectedToppings });
+  }
+
+  addTopping(topping) {
+    const { selectedToppings } = this.state;
+    const newSelectedToppings = selectedToppings.map(selectedTopping => {
+      const { name } = selectedTopping;
+      if (name === topping.name) {
+        const { amount } = topping;
+        const newAmount = amount + 1;
+        return {
+          ...topping,
+          amount: newAmount
+        };
+      }
+      return selectedTopping;
+    });
+    this.setState({
+      selectedToppings: newSelectedToppings
+    });
+  }
+
+  minusTopping(topping) {
+    const { selectedToppings } = this.state;
+    const newSelectedToppings = selectedToppings
+      .map(selectedTopping => {
+        const { name } = selectedTopping;
+        if (name === topping.name) {
+          const { amount } = topping;
+          const newAmount = amount - 1;
+          if (newAmount === 0) {
+            return undefined;
+          }
+          return {
+            ...topping,
+            amount: newAmount
+          };
+        }
+        return selectedTopping;
+      })
+      .filter(newSelectedTopping => !!newSelectedTopping);
+    this.setState({
+      selectedToppings: newSelectedToppings
+    });
   }
 
   render() {
@@ -99,6 +144,8 @@ class App extends React.Component {
           <Summary
             selectedSize={selectedSize}
             selectedToppings={selectedToppings}
+            addTopping={this.addTopping}
+            minusTopping={this.minusTopping}
           />
         </Section>
       </Page>
