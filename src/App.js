@@ -140,7 +140,7 @@ class App extends React.Component {
             onClick={this.onToppingClick}
           />
         </Section>
-        <Section title="Summary">
+        <Section title="Order Summary">
           <Summary
             selectedSize={selectedSize}
             selectedToppings={selectedToppings}
