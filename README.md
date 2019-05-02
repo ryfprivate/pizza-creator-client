@@ -1,10 +1,10 @@
 # Pizza Creator Client
 
-### Introduction 
+### Introduction
 
-This repository contains a pizza creator application. Prospective users are pizza shop customers that would like to build and customise their own pizzas. 
+This repository contains a pizza creator application. Prospective users are pizza shop customers that would like to build and customise their own pizzas.
 
-Auto deployment is set up at https://pizza-creator-client.herokuapp.com/
+Deployment is set up at https://ryfprivate.github.io/pizza-creator-client/
 
 ## Available Scripts
 
@@ -47,7 +47,5 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 This app is part of an integrated system for pizza businesses. Other related repositories (under development) include:
 
-* Pizza Creator Admin \
-https://github.com/jiangren-mel-fullstack-1812/team-pizza-admin
-
-
+- Pizza Creator Admin \
+  https://github.com/jiangren-mel-fullstack-1812/team-pizza-admin
