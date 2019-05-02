@@ -71,7 +71,6 @@ export default ({
       <Total>
         <span>{`Total: $${total.toFixed(2)}`}</span>
       </Total>
-      <span>Hello world</span>
     </div>
   );
 };
