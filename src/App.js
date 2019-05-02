@@ -4,6 +4,7 @@ import Section from './components/Section/Section';
 import DetailsForm from './components/DetailsForm';
 import Sizes from './components/Sizes';
 import Toppings from './components/Toppings';
+import Summary from './components/Summary';
 
 import sizes from './sizes.json';
 import toppings from './toppings.json';
@@ -92,6 +93,12 @@ class App extends React.Component {
             toppings={toppings}
             selectedToppings={selectedToppings}
             onClick={this.onToppingClick}
+          />
+        </Section>
+        <Section title="Summary">
+          <Summary
+            selectedSize={selectedSize}
+            selectedToppings={selectedToppings}
           />
         </Section>
       </Page>
