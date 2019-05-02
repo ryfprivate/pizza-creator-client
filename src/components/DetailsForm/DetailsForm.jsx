@@ -12,9 +12,9 @@ export default class DetailsForm extends React.Component {
   render() {
     const { data, onDataChange, dirty } = this.props;
 
-    const confirmMobileValidationMessage = getValidationMessageForConfirmMobile(
-      data.confirmMobile,
-      data.mobile
+    const confirmEmailValidationMessage = getValidationMessageForConfirmEmail(
+      data.confirmEmail,
+      data.email
     );
 
     return (
@@ -36,20 +36,20 @@ export default class DetailsForm extends React.Component {
           validationMessage={getValidationMessageForMobile(data.mobile)}
         />
         <Input
-          label="Confirm Mobile"
-          value={data.confirmMobile}
-          formDirty={dirty}
-          validate={!confirmMobileValidationMessage}
-          onChange={value => onDataChange('confirmMobile', value)}
-          validationMessage={confirmMobileValidationMessage}
-        />
-        <Input
           label="Email"
           value={data.email}
           formDirty={dirty}
           validate={!getValidationMessageForEmail(data.email)}
           onChange={value => onDataChange('email', value)}
           validationMessage={getValidationMessageForEmail(data.email)}
+        />
+        <Input
+          label="Confirm Email"
+          value={data.confirmEmail}
+          formDirty={dirty}
+          validate={!confirmEmailValidationMessage}
+          onChange={value => onDataChange('confirmEmail', value)}
+          validationMessage={confirmEmailValidationMessage}
         />
         <Input
           label="Address"
@@ -106,21 +106,21 @@ function getValidationMessageForEmail(email) {
   return '';
 }
 
-function validateMobile(mobile) {
-  var re = /^04\d{8}$/;
-  return re.test(String(mobile).toLowerCase());
-}
-
-function getValidationMessageForConfirmMobile(confirmMobile, mobile) {
-  if (!confirmMobile) {
-    return 'Please enter your Confirm Mobile';
+function getValidationMessageForConfirmEmail(confirmEmail, email) {
+  if (!confirmEmail) {
+    return 'Please enter your Confirm Email';
   }
 
-  if (confirmMobile !== mobile) {
-    return 'The Confirm Mobile is not same as Mobile Number';
+  if (confirmEmail !== email) {
+    return 'The Confirm Email is not same as email';
   }
 
   return '';
+}
+
+function validateMobile(mobile) {
+  var re = /^04\d{8}$/;
+  return re.test(String(mobile).toLowerCase());
 }
 
 function getValidationMessageForMobile(mobile) {
