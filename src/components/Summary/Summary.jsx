@@ -48,13 +48,15 @@ export default ({
   return (
     <div>
       <Summary>
-        <Item>
-          <span>{`${selectedSize.name} Pizza`}</span>
-          <span />
-          <span />
-          <span />
-          <span>{`${selectedSize.price}`}</span>
-        </Item>
+        {selectedSize ? (
+          <Item>
+            <span>{`${selectedSize.name} Pizza`}</span>
+            <span />
+            <span />
+            <span />
+            <span>{`${selectedSize.price}`}</span>
+          </Item>
+        ) : null}
         {selectedToppings.map(selectedTopping => {
           const { name, amount, price } = selectedTopping;
           return (

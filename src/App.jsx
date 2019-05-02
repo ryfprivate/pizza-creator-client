@@ -22,7 +22,7 @@ class App extends React.Component {
       detailsFormData: {},
       detailsFormDirty: false,
       sizes: sizes,
-      selectedSize: sizes ? sizes[0] : null,
+      selectedSize: sizes[0],
       toppings: toppings,
       selectedToppings: []
     };
