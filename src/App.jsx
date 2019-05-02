@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import Section from './components/Section/Section';
+import Section from './components/Section';
+import ConfirmationModal from './components/ConfirmationModal';
 import DetailsForm from './components/DetailsForm';
 import Sizes from './components/Sizes';
 import Toppings from './components/Toppings';
 import Summary from './components/Summary';
+import Submit from './components/Submit';
 
 import sizes from './sizes.json';
 import toppings from './toppings.json';
@@ -24,7 +26,8 @@ class App extends React.Component {
       sizes: sizes,
       selectedSize: sizes[0],
       toppings: toppings,
-      selectedToppings: []
+      selectedToppings: [],
+      showConfirmationModal: false
     };
 
     this.onDetailsFormDataChange = this.onDetailsFormDataChange.bind(this);
@@ -32,6 +35,7 @@ class App extends React.Component {
     this.onToppingClick = this.onToppingClick.bind(this);
     this.addTopping = this.addTopping.bind(this);
     this.minusTopping = this.minusTopping.bind(this);
+    this.onPlaceOrderClick = this.onPlaceOrderClick.bind(this);
   }
 
   onDetailsFormDataChange(name, value) {
@@ -107,6 +111,19 @@ class App extends React.Component {
     });
   }
 
+  onPlaceOrderClick(event) {
+    const { detailsFormData } = this.state;
+    event.preventDefault();
+
+    this.setState({
+      detailsFormDirty: true
+    });
+    // Need to add validation prevention
+    this.setState({
+      showConfirmationModal: true
+    });
+  }
+
   render() {
     const {
       detailsFormData,
@@ -114,11 +131,20 @@ class App extends React.Component {
       sizes,
       selectedSize,
       toppings,
-      selectedToppings
+      selectedToppings,
+      showConfirmationModal
     } = this.state;
 
     return (
       <Page>
+        {showConfirmationModal && (
+          <ConfirmationModal
+            data={detailsFormData}
+            selectedSize={selectedSize}
+            selectedToppings={selectedToppings}
+            onClose={() => this.setState({ showConfirmationModal: false })}
+          />
+        )}
         <Section title="Enter Your Details">
           <DetailsForm
             data={detailsFormData}
@@ -148,6 +174,7 @@ class App extends React.Component {
             minusTopping={this.minusTopping}
           />
         </Section>
+        <Submit onClick={this.onPlaceOrderClick} />
       </Page>
     );
   }
