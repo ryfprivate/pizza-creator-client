@@ -28,14 +28,6 @@ export default class DetailsForm extends React.Component {
           validationMessage="Please enter your name"
         />
         <Input
-          label="Mobile Number"
-          value={data.mobile}
-          formDirty={dirty}
-          validate={!getValidationMessageForMobile(data.mobile)}
-          onChange={value => onDataChange('mobile', value)}
-          validationMessage={getValidationMessageForMobile(data.mobile)}
-        />
-        <Input
           label="Email"
           value={data.email}
           formDirty={dirty}
@@ -60,12 +52,20 @@ export default class DetailsForm extends React.Component {
           validationMessage="Please enter your Address"
         />
         <Input
-          label="Post Code"
+          label="PostCode"
           value={data.postCode}
           formDirty={dirty}
           validate={!getValidationMessageForPostCode(data.postCode)}
           onChange={value => onDataChange('postCode', value)}
           validationMessage={getValidationMessageForPostCode(data.postCode)}
+        />
+        <Input
+          label="Mobile Number"
+          value={data.mobile}
+          formDirty={dirty}
+          validate={!getValidationMessageForMobile(data.mobile)}
+          onChange={value => onDataChange('mobile', value)}
+          validationMessage={getValidationMessageForMobile(data.mobile)}
         />
       </DetailsFormDiv>
     );
@@ -108,11 +108,11 @@ function getValidationMessageForEmail(email) {
 
 function getValidationMessageForConfirmEmail(confirmEmail, email) {
   if (!confirmEmail) {
-    return 'Please enter your Confirm Email';
+    return 'Please confirm your Email';
   }
 
   if (confirmEmail !== email) {
-    return 'The Confirm Email is not same as email';
+    return 'The Confirm Email does not match';
   }
 
   return '';
