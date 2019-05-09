@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import getTotal from '../../helpers/getTotal';
 
 const Modal = styled.div`
   position: fixed;
@@ -18,7 +19,7 @@ const ModalBox = styled.div`
   text-align: center;
   background: white;
   min-width: 400px;
-  margin-top: 10rem;
+  margin-top: 5rem;
   padding: 1rem 2.5rem;
 `;
 
@@ -31,6 +32,11 @@ const Pizza = styled.div`
   grid-template-columns: 1fr auto;
   align-items: center;
   text-transform: capitalize;
+`;
+
+const PriceContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr auto;
 `;
 
 const Actions = styled.div`
@@ -58,8 +64,13 @@ const Button = styled.button`
   }
 `;
 
+const Strong = styled.strong`
+  text-align: left;
+`;
+
 export default ({ data, selectedSize, selectedToppings, onClose }) => {
   const { name, address, postCode, contactNumber } = data;
+  const total = getTotal({ selectedSize, selectedToppings });
   return (
     <Modal>
       <ModalBox>
@@ -76,7 +87,8 @@ export default ({ data, selectedSize, selectedToppings, onClose }) => {
         <hr />
         <PizzaContainer>
           <Pizza>
-            <strong>{selectedSize.name}</strong>
+            <strong>{selectedSize.name} Pizza</strong>
+            <span />
             {selectedToppings.map(({ name, amount }) => {
               return (
                 <div key={name}>
@@ -86,6 +98,11 @@ export default ({ data, selectedSize, selectedToppings, onClose }) => {
             })}
           </Pizza>
         </PizzaContainer>
+        <hr />
+        <PriceContainer>
+          <Strong>Price:</Strong>
+          <strong>{total.toFixed(2)}</strong>
+        </PriceContainer>
         <Actions>
           <Button onClick={onClose} className="cancel">
             Cancel

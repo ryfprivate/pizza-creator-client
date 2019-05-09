@@ -3,5 +3,5 @@ export default ({ selectedSize, selectedToppings }) => {
   selectedToppings.forEach(({ price, amount }) => {
     total = total + price * amount;
   });
-  return total.toFixed(2);
+  return total;
 };

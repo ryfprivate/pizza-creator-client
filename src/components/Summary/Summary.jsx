@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import getTotal from './getTotal';
+import getTotal from '../../helpers/getTotal';
 
 const Summary = styled.ul`
   padding: 0;
