@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import Section from './components/Section';
 import ConfirmationModal from './components/ConfirmationModal';
@@ -7,9 +8,6 @@ import Sizes from './components/Sizes';
 import Toppings from './components/Toppings';
 import Summary from './components/Summary';
 import Submit from './components/Submit';
-
-import sizes from './sizes.json';
-import toppings from './toppings.json';
 
 const Page = styled.div`
   font: 300 16px/1.4 -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
@@ -23,9 +21,9 @@ class App extends React.Component {
     this.state = {
       detailsFormData: {},
       detailsFormDirty: false,
-      sizes: sizes,
-      selectedSize: sizes[0],
-      toppings: toppings,
+      sizes: [],
+      selectedSize: null,
+      toppings: [],
       selectedToppings: [],
       showConfirmationModal: false
     };
@@ -36,6 +34,28 @@ class App extends React.Component {
     this.addTopping = this.addTopping.bind(this);
     this.minusTopping = this.minusTopping.bind(this);
     this.onPlaceOrderClick = this.onPlaceOrderClick.bind(this);
+  }
+
+  componentDidMount() {
+    const newToppings = [];
+    const newSizes = [];
+    axios
+      .get('https://pizza-creator-api.herokuapp.com/products')
+      .then(response => {
+        const products = response.data;
+        products.forEach(product => {
+          if (product.type === 'TOPPING') {
+            newToppings.push(product);
+          } else {
+            newSizes.push(product);
+          }
+        });
+        this.setState({
+          toppings: newToppings,
+          sizes: newSizes,
+          selectedSize: newSizes[0]
+        });
+      });
   }
 
   onDetailsFormDataChange(name, value) {
