@@ -8,6 +8,7 @@ import Sizes from './components/Sizes';
 import Toppings from './components/Toppings';
 import Summary from './components/Summary';
 import Submit from './components/Submit';
+import Loading from './components/Loading';
 
 const Page = styled.div`
   font: 300 16px/1.4 -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
@@ -25,7 +26,8 @@ class App extends React.Component {
       selectedSize: null,
       toppings: [],
       selectedToppings: [],
-      showConfirmationModal: false
+      showConfirmationModal: false,
+      loading: false
     };
 
     this.onDetailsFormDataChange = this.onDetailsFormDataChange.bind(this);
@@ -39,6 +41,7 @@ class App extends React.Component {
   componentDidMount() {
     const newToppings = [];
     const newSizes = [];
+    this.setState({ loading: true });
     axios
       .get('https://pizza-creator-api.herokuapp.com/products')
       .then(response => {
@@ -51,6 +54,7 @@ class App extends React.Component {
           }
         });
         this.setState({
+          loading: false,
           toppings: newToppings,
           sizes: newSizes,
           selectedSize: newSizes[0]
@@ -152,7 +156,8 @@ class App extends React.Component {
       selectedSize,
       toppings,
       selectedToppings,
-      showConfirmationModal
+      showConfirmationModal,
+      loading
     } = this.state;
 
     return (
@@ -173,18 +178,26 @@ class App extends React.Component {
           />
         </Section>
         <Section title="Select the size">
-          <Sizes
-            sizes={sizes}
-            selectedSize={selectedSize}
-            onClick={this.onSizeClick}
-          />
+          {loading ? (
+            <Loading />
+          ) : (
+            <Sizes
+              sizes={sizes}
+              selectedSize={selectedSize}
+              onClick={this.onSizeClick}
+            />
+          )}
         </Section>
         <Section title="Pick your toppings">
-          <Toppings
-            toppings={toppings}
-            selectedToppings={selectedToppings}
-            onClick={this.onToppingClick}
-          />
+          {loading ? (
+            <Loading />
+          ) : (
+            <Toppings
+              toppings={toppings}
+              selectedToppings={selectedToppings}
+              onClick={this.onToppingClick}
+            />
+          )}
         </Section>
         <Section title="Order Summary">
           <Summary
