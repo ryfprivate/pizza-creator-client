@@ -15,19 +15,33 @@ const Page = styled.div`
     Arial, sans-serif;
 `;
 
+function hasErrors(obj1, obj2) {
+  const keys = Object.keys(obj1);
+  const values = Object.values(obj2);
+  if (keys.length < 6) {
+    return true;
+  }
+  // if (values.includes(true)) {
+  //   return true;
+  // }
+  return false;
+}
+
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       detailsFormData: {},
+      detailsFormErros: {},
       detailsFormDirty: false,
       sizes: [],
       selectedSize: null,
       toppings: [],
       selectedToppings: [],
       showConfirmationModal: false,
-      loading: false
+      loading: false,
+      disableSubmit: false
     };
 
     this.onDetailsFormDataChange = this.onDetailsFormDataChange.bind(this);
@@ -62,16 +76,22 @@ class App extends React.Component {
       });
   }
 
-  onDetailsFormDataChange(name, value) {
-    const { detailsFormData } = this.state;
+  onDetailsFormDataChange(name, value, showError) {
+    const { detailsFormData, detailsFormErrors } = this.state;
 
     const newDetailsFormData = {
       ...detailsFormData,
       [name]: value
     };
 
+    const newDetailsFormErrors = {
+      ...detailsFormErrors,
+      [name]: showError
+    };
+
     this.setState({
-      detailsFormData: newDetailsFormData
+      detailsFormData: newDetailsFormData,
+      detailsFormErrors: newDetailsFormErrors
     });
   }
 
@@ -136,13 +156,21 @@ class App extends React.Component {
   }
 
   onPlaceOrderClick(event) {
-    const { detailsFormData } = this.state;
+    const { detailsFormData, detailsFormErrors, disableSubmit } = this.state;
     event.preventDefault();
+
+    console.log('detailsFormErrors', detailsFormErrors);
 
     this.setState({
       detailsFormDirty: true
     });
-    // Need to add validation prevention
+    if (hasErrors(detailsFormData, detailsFormErrors)) {
+      return;
+    }
+    if (disableSubmit) {
+      return;
+    }
+
     this.setState({
       showConfirmationModal: true
     });
@@ -157,7 +185,8 @@ class App extends React.Component {
       toppings,
       selectedToppings,
       showConfirmationModal,
-      loading
+      loading,
+      disableSubmit
     } = this.state;
 
     return (
@@ -207,7 +236,7 @@ class App extends React.Component {
             minusTopping={this.minusTopping}
           />
         </Section>
-        <Submit onClick={this.onPlaceOrderClick} />
+        <Submit onClick={this.onPlaceOrderClick} disabled={disableSubmit} />
       </Page>
     );
   }

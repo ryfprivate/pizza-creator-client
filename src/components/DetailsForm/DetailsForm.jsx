@@ -10,7 +10,7 @@ const DetailsFormDiv = styled.div`
 
 export default class DetailsForm extends React.Component {
   render() {
-    const { data, onDataChange, dirty } = this.props;
+    const { data, dirty, onDataChange } = this.props;
 
     const confirmEmailValidationMessage = getValidationMessageForConfirmEmail(
       data.confirmEmail,
@@ -24,7 +24,9 @@ export default class DetailsForm extends React.Component {
           value={data.name}
           formDirty={dirty}
           validate={data.name}
-          onChange={value => onDataChange('name', value)}
+          onChange={(value, showError) =>
+            onDataChange('name', value, showError)
+          }
           validationMessage="Please enter your name"
         />
         <Input
@@ -32,7 +34,9 @@ export default class DetailsForm extends React.Component {
           value={data.email}
           formDirty={dirty}
           validate={!getValidationMessageForEmail(data.email)}
-          onChange={value => onDataChange('email', value)}
+          onChange={(value, showError) =>
+            onDataChange('email', value, showError)
+          }
           validationMessage={getValidationMessageForEmail(data.email)}
         />
         <Input
@@ -40,7 +44,9 @@ export default class DetailsForm extends React.Component {
           value={data.confirmEmail}
           formDirty={dirty}
           validate={!confirmEmailValidationMessage}
-          onChange={value => onDataChange('confirmEmail', value)}
+          onChange={(value, showError) =>
+            onDataChange('confirmEmail', value, showError)
+          }
           validationMessage={confirmEmailValidationMessage}
         />
         <Input
@@ -48,7 +54,9 @@ export default class DetailsForm extends React.Component {
           value={data.address}
           formDirty={dirty}
           validate={data.address}
-          onChange={value => onDataChange('address', value)}
+          onChange={(value, showError) =>
+            onDataChange('address', value, showError)
+          }
           validationMessage="Please enter your Address"
         />
         <Input
@@ -56,7 +64,9 @@ export default class DetailsForm extends React.Component {
           value={data.postCode}
           formDirty={dirty}
           validate={!getValidationMessageForPostCode(data.postCode)}
-          onChange={value => onDataChange('postCode', value)}
+          onChange={(value, showError) =>
+            onDataChange('postCode', value, showError)
+          }
           validationMessage={getValidationMessageForPostCode(data.postCode)}
         />
         <Input
@@ -64,7 +74,9 @@ export default class DetailsForm extends React.Component {
           value={data.mobile}
           formDirty={dirty}
           validate={!getValidationMessageForMobile(data.mobile)}
-          onChange={value => onDataChange('mobile', value)}
+          onChange={(value, showError) =>
+            onDataChange('mobile', value, showError)
+          }
           validationMessage={getValidationMessageForMobile(data.mobile)}
         />
       </DetailsFormDiv>
