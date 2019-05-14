@@ -64,6 +64,9 @@
     ],
     "setupFilesAfterEnv": [
       "./setupTests.js"
+    ],
+    "moduleDirectories": [
+      "node_modules"
     ]
   }
 }
