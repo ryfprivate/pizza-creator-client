@@ -44,14 +44,15 @@ export default class Input extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
-  onChange({ target: { value } }) {
+  onChange(e, showError) {
     const { onChange } = this.props;
+    const value = e.target.value;
 
     this.setState({
       dirty: true
     });
 
-    onChange(value);
+    onChange(value, showError);
   }
 
   render() {
@@ -70,7 +71,11 @@ export default class Input extends React.Component {
     return (
       <Container>
         <Label className={showError && 'error'}>{label}</Label>
-        <InputFrame value={value} onChange={this.onChange} type="text" />
+        <InputFrame
+          value={value}
+          onChange={e => this.onChange(e, showError)}
+          type="text"
+        />
         <ValidationErrorDiv>
           {showError && validationMessage}
         </ValidationErrorDiv>
