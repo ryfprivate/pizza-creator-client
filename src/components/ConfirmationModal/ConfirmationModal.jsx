@@ -12,6 +12,7 @@ const Modal = styled.div`
   justify-content: center;
   align-items: flex-start;
   background: rgba(0, 0, 0, 0.75);
+  z-index: 1000;
 `;
 
 const ModalBox = styled.div`
@@ -69,7 +70,7 @@ const Strong = styled.strong`
 `;
 
 export default ({ data, selectedSize, selectedToppings, onClose }) => {
-  const { name, address, postCode, contactNumber } = data;
+  const { name, address, postCode, mobile } = data;
   const total = getTotal({ selectedSize, selectedToppings });
   return (
     <Modal>
@@ -77,12 +78,12 @@ export default ({ data, selectedSize, selectedToppings, onClose }) => {
         <h1>Your Order Details</h1>
         <address>
           <p>
-            <strong>{name}</strong>
+            <strong>Order for: {name}</strong>
           </p>
           <p>
-            {address} {postCode}
+            Delivery to: {address} {postCode}
           </p>
-          <p>{contactNumber}</p>
+          <p>Contact: {mobile}</p>
         </address>
         <hr />
         <PizzaContainer>
