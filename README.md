@@ -4,7 +4,7 @@
 
 This repository contains a pizza creator application. Prospective users are pizza shop customers that would like to build and customise their own pizzas.
 
-Deployment is set up at https://ryfprivate.github.io/pizza-creator-client/
+Deployment is set up at https://pizza-creator-client.herokuapp.com/
 
 ## Available Scripts
 
