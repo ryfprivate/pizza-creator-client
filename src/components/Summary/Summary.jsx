@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import getTotal from '../../helpers/getTotal';
 
-const Summary = styled.ul`
+const SummaryContainer = styled.ul`
   padding: 0;
   list-style: none;
 `;
@@ -33,12 +33,12 @@ const Button = styled.button`
   }
 `;
 
-const Total = styled.div`
+const TotalContainer = styled.div`
   text-align: right;
   font-size: 1.25rem;
 `;
 
-export default ({
+const Summary = ({
   selectedSize,
   selectedToppings,
   addTopping,
@@ -47,7 +47,7 @@ export default ({
   const total = getTotal({ selectedSize, selectedToppings });
   return (
     <div>
-      <Summary>
+      <SummaryContainer>
         {selectedSize ? (
           <Item>
             <span>{`${selectedSize.name} Pizza`}</span>
@@ -69,10 +69,12 @@ export default ({
             </Item>
           );
         })}
-      </Summary>
-      <Total>
+      </SummaryContainer>
+      <TotalContainer>
         <span>{`Total: $${total.toFixed(2)}`}</span>
-      </Total>
+      </TotalContainer>
     </div>
   );
 };
+
+export default Summary;

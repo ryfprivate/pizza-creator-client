@@ -69,7 +69,12 @@ const Strong = styled.strong`
   text-align: left;
 `;
 
-export default ({ data, selectedSize, selectedToppings, onClose }) => {
+const ConfirmationModal = ({
+  data,
+  selectedSize,
+  selectedToppings,
+  onClose
+}) => {
   const { name, address, postCode, mobile } = data;
   const total = getTotal({ selectedSize, selectedToppings });
   return (
@@ -114,3 +119,6 @@ export default ({ data, selectedSize, selectedToppings, onClose }) => {
     </Modal>
   );
 };
+
+
+export default ConfirmationModal;

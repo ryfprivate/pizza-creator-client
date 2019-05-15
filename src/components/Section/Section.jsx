@@ -10,7 +10,7 @@ const H2 = styled.h2`
   margin-bottom: 20px;
 `;
 
-export default ({ title, children }) => {
+const Section = ({ title, children }) => {
   return (
     <div>
       <H2>{title}</H2>
@@ -18,3 +18,5 @@ export default ({ title, children }) => {
     </div>
   );
 };
+
+export default Section;

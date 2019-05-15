@@ -33,7 +33,7 @@ const ValidationErrorDiv = styled.div`
   font-size: 14px;
 `;
 
-export default class Input extends React.Component {
+class Input extends React.Component {
   constructor(props) {
     super(props);
 
@@ -83,3 +83,5 @@ export default class Input extends React.Component {
     );
   }
 }
+
+export default Input;

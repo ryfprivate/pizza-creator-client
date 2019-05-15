@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default () => {
+const Loading = () => {
   return (
     <div>
       <i className="fa fa-spinner fa-spin" />
@@ -8,3 +8,5 @@ export default () => {
     </div>
   );
 };
+
+export default Loading;

@@ -8,82 +8,6 @@ const DetailsFormDiv = styled.div`
   grid-gap: 1rem;
 `;
 
-export default class DetailsForm extends React.Component {
-  render() {
-    const { data, dirty, onDataChange } = this.props;
-
-    const confirmEmailValidationMessage = getValidationMessageForConfirmEmail(
-      data.confirmEmail,
-      data.email
-    );
-
-    return (
-      <DetailsFormDiv>
-        <Input
-          label="Name"
-          value={data.name}
-          formDirty={dirty}
-          validate={data.name}
-          onChange={(value, showError) =>
-            onDataChange('name', value, showError)
-          }
-          validationMessage="Please enter your name"
-        />
-        <Input
-          label="Email"
-          value={data.email}
-          formDirty={dirty}
-          validate={!getValidationMessageForEmail(data.email)}
-          onChange={(value, showError) =>
-            onDataChange('email', value, showError)
-          }
-          validationMessage={getValidationMessageForEmail(data.email)}
-        />
-        <Input
-          label="Confirm Email"
-          value={data.confirmEmail}
-          formDirty={dirty}
-          validate={!confirmEmailValidationMessage}
-          onChange={(value, showError) =>
-            onDataChange('confirmEmail', value, showError)
-          }
-          validationMessage={confirmEmailValidationMessage}
-        />
-        <Input
-          label="Address"
-          value={data.address}
-          formDirty={dirty}
-          validate={data.address}
-          onChange={(value, showError) =>
-            onDataChange('address', value, showError)
-          }
-          validationMessage="Please enter your Address"
-        />
-        <Input
-          label="PostCode"
-          value={data.postCode}
-          formDirty={dirty}
-          validate={!getValidationMessageForPostCode(data.postCode)}
-          onChange={(value, showError) =>
-            onDataChange('postCode', value, showError)
-          }
-          validationMessage={getValidationMessageForPostCode(data.postCode)}
-        />
-        <Input
-          label="Mobile Number"
-          value={data.mobile}
-          formDirty={dirty}
-          validate={!getValidationMessageForMobile(data.mobile)}
-          onChange={(value, showError) =>
-            onDataChange('mobile', value, showError)
-          }
-          validationMessage={getValidationMessageForMobile(data.mobile)}
-        />
-      </DetailsFormDiv>
-    );
-  }
-}
-
 function validatePostCode(postCode) {
   var re = /^\d{4}$/;
   return re.test(String(postCode).toLowerCase());
@@ -146,3 +70,73 @@ function getValidationMessageForMobile(mobile) {
 
   return '';
 }
+
+const DetailsForm = ({ data, dirty, onDataChange }) => {
+  const confirmEmailValidationMessage = getValidationMessageForConfirmEmail(
+    data.confirmEmail,
+    data.email
+  );
+
+  return (
+    <DetailsFormDiv>
+      <Input
+        label="Name"
+        value={data.name}
+        formDirty={dirty}
+        validate={data.name}
+        onChange={(value, showError) => onDataChange('name', value, showError)}
+        validationMessage="Please enter your name"
+      />
+      <Input
+        label="Email"
+        value={data.email}
+        formDirty={dirty}
+        validate={!getValidationMessageForEmail(data.email)}
+        onChange={(value, showError) => onDataChange('email', value, showError)}
+        validationMessage={getValidationMessageForEmail(data.email)}
+      />
+      <Input
+        label="Confirm Email"
+        value={data.confirmEmail}
+        formDirty={dirty}
+        validate={!confirmEmailValidationMessage}
+        onChange={(value, showError) =>
+          onDataChange('confirmEmail', value, showError)
+        }
+        validationMessage={confirmEmailValidationMessage}
+      />
+      <Input
+        label="Address"
+        value={data.address}
+        formDirty={dirty}
+        validate={data.address}
+        onChange={(value, showError) =>
+          onDataChange('address', value, showError)
+        }
+        validationMessage="Please enter your Address"
+      />
+      <Input
+        label="PostCode"
+        value={data.postCode}
+        formDirty={dirty}
+        validate={!getValidationMessageForPostCode(data.postCode)}
+        onChange={(value, showError) =>
+          onDataChange('postCode', value, showError)
+        }
+        validationMessage={getValidationMessageForPostCode(data.postCode)}
+      />
+      <Input
+        label="Mobile Number"
+        value={data.mobile}
+        formDirty={dirty}
+        validate={!getValidationMessageForMobile(data.mobile)}
+        onChange={(value, showError) =>
+          onDataChange('mobile', value, showError)
+        }
+        validationMessage={getValidationMessageForMobile(data.mobile)}
+      />
+    </DetailsFormDiv>
+  );
+};
+
+export default DetailsForm;

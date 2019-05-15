@@ -32,7 +32,7 @@ const Image = styled.img`
   height: 35px;
 `;
 
-export default ({ toppings, selectedToppings, onClick }) => {
+const Toppings = ({ toppings, selectedToppings, onClick }) => {
   return (
     <Container>
       {toppings.map(topping => {
@@ -61,3 +61,5 @@ export default ({ toppings, selectedToppings, onClick }) => {
     </Container>
   );
 };
+
+export default Toppings;

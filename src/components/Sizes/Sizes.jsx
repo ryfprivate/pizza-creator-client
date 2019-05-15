@@ -38,7 +38,7 @@ const Span = styled.span`
   text-transform: capitalize;
 `;
 
-export default ({ sizes, selectedSize, onClick }) => {
+const Sizes = ({ sizes, selectedSize, onClick }) => {
   return (
     <Container>
       {sizes.map(size => {
@@ -61,3 +61,5 @@ export default ({ sizes, selectedSize, onClick }) => {
     </Container>
   );
 };
+
+export default Sizes;

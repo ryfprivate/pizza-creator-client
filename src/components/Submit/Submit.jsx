@@ -27,7 +27,7 @@ const Button = styled.button`
   }}
 `;
 
-export default ({ onClick, disabled }) => {
+const Submit = ({ onClick, disabled }) => {
   return (
     <Container>
       <Button type="submit" onClick={onClick} disabled={disabled}>
@@ -36,3 +36,5 @@ export default ({ onClick, disabled }) => {
     </Container>
   );
 };
+
+export default Submit;
