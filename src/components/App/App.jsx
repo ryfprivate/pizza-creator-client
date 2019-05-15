@@ -1,14 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import Section from './components/Section';
-import ConfirmationModal from './components/ConfirmationModal';
-import DetailsForm from './components/DetailsForm';
-import Sizes from './components/Sizes';
-import Toppings from './components/Toppings';
-import Summary from './components/Summary';
-import Submit from './components/Submit';
-import Loading from './components/Loading';
+import Section from '../Section';
+import ConfirmationModal from '../ConfirmationModal';
+import DetailsForm from '../DetailsForm';
+import Sizes from '../Sizes';
+import Toppings from '../Toppings';
+import Summary from '../Summary';
+import Submit from '../Submit';
+import Loading from '../Loading';
 
 const Page = styled.div`
   font: 300 16px/1.4 -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
