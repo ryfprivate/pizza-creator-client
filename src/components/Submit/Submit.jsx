@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const styleDisabled = `
   background: grey;
@@ -35,6 +36,11 @@ const Submit = ({ onClick, disabled }) => {
       </Button>
     </Container>
   );
+};
+
+Submit.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  disabled: PropTypes.bool.isRequired
 };
 
 export default Submit;

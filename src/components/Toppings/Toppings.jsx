@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Container = styled.div`
   display: grid;
@@ -60,6 +61,12 @@ const Toppings = ({ toppings, selectedToppings, onClick }) => {
       })}
     </Container>
   );
+};
+
+Toppings.propTypes = {
+  toppings: PropTypes.array.isRequired,
+  selectedToppings: PropTypes.array.isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 export default Toppings;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Container = styled.div`
   display: grid;
@@ -60,6 +61,16 @@ const Sizes = ({ sizes, selectedSize, onClick }) => {
       })}
     </Container>
   );
+};
+
+Sizes.propTypes = {
+  sizes: PropTypes.array.isRequired,
+  selectedSize: PropTypes.shape({
+    name: PropTypes.string,
+    price: PropTypes.number,
+    imgUrl: PropTypes.string
+  }),
+  onClick: PropTypes.func.isRequired
 };
 
 export default Sizes;

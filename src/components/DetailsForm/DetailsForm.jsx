@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Input from '../Input/Input';
 
 const DetailsFormDiv = styled.div`
@@ -137,6 +138,19 @@ const DetailsForm = ({ data, dirty, onDataChange }) => {
       />
     </DetailsFormDiv>
   );
+};
+
+DetailsForm.propTypes = {
+  data: PropTypes.shape({
+    name: PropTypes.string,
+    email: PropTypes.string,
+    confirmEmail: PropTypes.string,
+    address: PropTypes.string,
+    postCode: PropTypes.string,
+    mobile: PropTypes.string
+  }).isRequired,
+  dirty: PropTypes.bool.isRequired,
+  onDataChange: PropTypes.func.isRequired
 };
 
 export default DetailsForm;

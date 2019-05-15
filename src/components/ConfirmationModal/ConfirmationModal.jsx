@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import getTotal from '../../helpers/getTotal';
 
 const Modal = styled.div`
@@ -120,5 +121,22 @@ const ConfirmationModal = ({
   );
 };
 
+ConfirmationModal.propTypes = {
+  data: PropTypes.shape({
+    name: PropTypes.string,
+    email: PropTypes.string,
+    confirmEmail: PropTypes.string,
+    address: PropTypes.string,
+    postCode: PropTypes.string,
+    mobile: PropTypes.string
+  }).isRequired,
+  selectedSize: PropTypes.shape({
+    name: PropTypes.string,
+    price: PropTypes.number,
+    imgUrl: PropTypes.string
+  }).isRequired,
+  selectedToppings: PropTypes.array.isRequired,
+  onClose: PropTypes.func.isRequired
+};
 
 export default ConfirmationModal;

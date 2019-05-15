@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import getTotal from '../../helpers/getTotal';
 
 const SummaryContainer = styled.ul`
@@ -75,6 +76,17 @@ const Summary = ({
       </TotalContainer>
     </div>
   );
+};
+
+Summary.propTypes = {
+  selectedSize: PropTypes.shape({
+    name: PropTypes.string,
+    price: PropTypes.number,
+    imgUrl: PropTypes.string
+  }),
+  selectedToppings: PropTypes.array.isRequired,
+  addTopping: PropTypes.func.isRequired,
+  minusTopping: PropTypes.func.isRequired
 };
 
 export default Summary;
