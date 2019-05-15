@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { shallow } from 'enzyme';
 import App from '../../App';
 
-describe('First React component test with Enzyme', () => {
+describe('First test suite', () => {
   it('renders without crashing', () => {
-    shallow(<App />);
+    const div = document.createElement('div');
+    ReactDOM.render(<App />, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
+  it('knows that 2 and 2 make 4', () => {
+    expect(2 + 2).toBe(4);
   });
 });

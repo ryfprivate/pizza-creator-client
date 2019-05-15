@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "webpack-dev-server --open --hot",
     "start": "node server.js",
-    
+    "heroku-prebuild": "npm run test",
     "build": "webpack --mode production",
     "heroku-postbuild": "webpack -p",
     "test": "jest",
