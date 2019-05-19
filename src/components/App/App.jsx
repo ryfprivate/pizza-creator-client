@@ -33,7 +33,7 @@ class App extends React.Component {
 
     this.state = {
       detailsFormData: {},
-      detailsFormErros: {},
+      detailsFormErrors: {},
       detailsFormDirty: false,
       sizes: [],
       selectedSize: null,
@@ -41,7 +41,8 @@ class App extends React.Component {
       selectedToppings: [],
       showConfirmationModal: false,
       loading: false,
-      disableSubmit: false
+      disableSubmit: false,
+      testCase: 123
     };
 
     this.onDetailsFormDataChange = this.onDetailsFormDataChange.bind(this);

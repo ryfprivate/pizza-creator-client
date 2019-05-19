@@ -1,14 +1,23 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from '../../App';
+import { shallow, mount } from 'enzyme';
+import App from '../App';
 
-describe('First test suite', () => {
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<App />, div);
-    ReactDOM.unmountComponentAtNode(div);
-  });
-  it('knows that 2 and 2 make 4', () => {
-    expect(2 + 2).toBe(4);
+describe('App test suite', () => {
+  describe('on mount', () => {
+    it('renders without crashing', () => {
+      shallow(<App />);
+    });
+    it('form is not dirty', () => {
+      const wrapper = shallow(<App />);
+      expect(wrapper.state('detailsFormDirty')).toEqual(false);
+    });
+    it('is not loading', () => {
+      const wrapper = shallow(<App />);
+      expect(wrapper.state('loading')).toEqual(true);
+    });
+    it('test state', () => {
+      const wrapper = shallow(<App />);
+      expect(wrapper.state('testCase')).toEqual(123);
+    });
   });
 });
